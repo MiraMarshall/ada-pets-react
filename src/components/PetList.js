@@ -6,14 +6,26 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const PetList = (props) => {
-
-
+const listOfPets = props.allPets.map((pet, i) => {
   return (
-    <div className="card-group">
-    </div>
+    <PetCard 
+    key={i}
+    id={pet.id}
+    name={pet.name}
+    species={pet.species}
+    about={pet.about}
+    location={pet.location}
+    />
   )
-}
+ 
+})
 
+return (
+  <div className="card-group">
+    {listOfPets}
+  </div>
+)
+}
 PetList.propTypes = {
   pets: PropTypes.array.isRequired,
   onSelectPet: PropTypes.func,
